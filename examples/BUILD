@@ -125,17 +125,17 @@ awk(
     name = "sum",
     src = partial.make(
         write_file,
-        content = range(1, 4),
+        content = [str(i) for i in range(1, 6)],
     ),
     progfile = "sumprogram",
 )
 
-# Verify the sum of 1+2+3
+# Verify the sum of 1+2+3+4+5
 diff_test(
     name = "sum_test",
     file1 = "sum.txt",
     file2 = [
-        "6",
+        "15",
         "",
     ],
 )
