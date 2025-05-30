@@ -26,6 +26,8 @@ jobs:
       tag_name: ${{ inputs.tag_name }}
       # GitHub repository which is a fork of the upstream where the Pull Request will be opened.
       registry_fork: alexeagle/bazel-central-registry
+      # Using a fine-grained PAT which can't open PRs on public repos
+      open_pull_request: false
     permissions:
       attestations: write
       contents: write
