@@ -1,6 +1,12 @@
 {
   "homepage": "https://github.com/alexeagle/awk.bzl",
-  "maintainers": [],
+  "maintainers": [
+    {
+      "email": "alex@aspect.build",
+      "github": "alexeagle",
+      "name": "Alex Eagle"
+    }
+  ],
   "repository": ["github:alexeagle/awk.bzl"],
   "versions": [],
   "yanked_versions": {}
