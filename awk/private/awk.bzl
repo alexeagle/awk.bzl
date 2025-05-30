@@ -21,7 +21,7 @@ def _awk_impl(ctx):
     if ctx.attr.field_separator:
         args.add_joined(["--field-separator", ctx.attr.field_separator], join_with = "=")
     for (key, value) in ctx.attr.assign.items():
-        args.add_joined(["--assign={}={}".format(key, value)], join_with = "=")
+        args.add_joined(["--assign", key, value], join_with = "=")
     args.add_joined(["--file", ctx.file.progfile], join_with = "=")
     args.add_all(ctx.files.src)
     ctx.actions.run_shell(
