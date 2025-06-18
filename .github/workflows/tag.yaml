@@ -58,4 +58,6 @@ jobs:
       BCR_PUBLISH_TOKEN: ${{ secrets.BCR_PUBLISH_TOKEN }}
     if: needs.tag.outputs.new-tag == 'true' && needs.tag.outputs.new-tag-version-type != 'major' && needs.tag.outputs.recently-tagged != 'true'
     permissions:
-      contents: write # allow create release
+      contents: write
+      attestations: write
+      id-token: write
