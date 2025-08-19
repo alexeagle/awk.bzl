@@ -15,10 +15,13 @@ ARCHIVE="awk.bzl-$TAG.tar.gz"
 git archive --format=tar --prefix=${PREFIX}/ ${TAG} | gzip > $ARCHIVE
 SHA=$(shasum -a 256 $ARCHIVE | awk '{print $1}')
 
-alias bazel-docs="bazel --output_base=$(mktemp -d)"
-bazel-docs query --output=label 'kind("starlark_doc_extract rule", //...)' \
-    | xargs bazel-docs build --remote_download_regex='.*doc_extract\.binaryproto'
-tar --create --auto-compress --directory "$(bazel-docs info bazel-bin)" --file "$GITHUB_WORKSPACE/${ARCHIVE%.tar.gz}.docs.tar.gz" .
+# Add generated API docs to the release, see https://github.com/bazelbuild/bazel-central-registry/issues/5593
+docs="$(mktemp -d)"
+bazel --output_base="$docs" docs query --output=label 'kind("starlark_doc_extract rule", //...)' \
+    | xargs bazel --output_base="$docs" build --remote_download_regex='.*doc_extract\.binaryproto'
+tar --create --auto-compress \
+    --directory "$(bazel --output_base="$docs" info bazel-bin)" \
+    --file "$GITHUB_WORKSPACE/${ARCHIVE%.tar.gz}.docs.tar.gz" .
 
 cat << EOF
 ## Using Bzlmod with Bazel 6 or greater
