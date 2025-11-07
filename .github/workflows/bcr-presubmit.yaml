@@ -1,0 +1,25 @@
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+jobs:
+  # TODO: a simple validation script that the structure here matches the .bcr/presubmit.yaml file
+  bcr-presubmit:
+    name: 🌿
+    runs-on: ${{ matrix.platform }}
+    strategy:
+      matrix:
+        platform: ["ubuntu-22.04", "macos-latest", "windows-latest"] # , "debian10"]
+        bazel: ["9.*", "8.x", "7.x"] # , "6.x"]
+        module_path: ["examples"]
+        test_targets: ["//..."]
+    steps:
+      - uses: actions/checkout@v5
+      - run: bazel test ${{ matrix.test_targets }}
+        working-directory: ${{ matrix.module_path }}
+        env:
+          USE_BAZEL_VERSION: ${{ matrix.bazel }}
+  
