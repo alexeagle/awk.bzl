@@ -1,8 +1,7 @@
 # See https://docs.aspect.build/v/workflows/config
-workspaces:
-  - .
-  - examples
 tasks:
   - test:
+  - format:
+  - buildozer:
 notifications:
   github: {}

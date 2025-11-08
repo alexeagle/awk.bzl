@@ -1,6 +1,6 @@
-load("@aspect_bazel_lib//lib:diff_test.bzl", "diff_test")
 load("@awk.bzl", "awk")
 load("@bazel_skylib//lib:partial.bzl", "partial")
+load("@bazel_lib//lib:diff_test.bzl", "diff_test")
 load("@bazel_skylib//rules:write_file.bzl", "write_file")
 
 # Run awk on a generated source file, producing bazel-bin/long_lines.txt
