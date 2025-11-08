@@ -1,7 +1,13 @@
 bcr_test_module:
   module_path: "examples"
   matrix:
-    platform: ["debian10", "macos", "ubuntu2004", "windows"]
+    platform:
+      - macos
+      - ubuntu2004
+      # FIXME: add uncomment after resolving this error:
+      # ERROR: C:/users/runneradmin/_bazel_runneradmin/zz6be3oj/external/gawk+/BUILD.bazel:154:10: Compiling main.c [for tool] failed: (Exit 2): cl.exe failed: error executing CppCompile command (from cc_binary rule target @@gawk+//:gawk) C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\cl.exe @bazel-out/x64_windows-opt-exec/bin/external/gawk+/_objs/gawk/main.obj.params
+      # C:\users\runneradmin\_bazel_runneradmin\zz6be3oj\execroot\_main\external\gawk+\awk.h(57): fatal error C1189: #error:  "gawk no longer supports non-C89 environments (no __STDC__ or __STDC__ < 1)"
+      # - windows
     bazel: ["9.*", "8.x", "7.x"]
   tasks:
     run_tests:

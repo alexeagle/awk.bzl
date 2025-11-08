@@ -6,15 +6,25 @@ on:
     branches:
       - main
 jobs:
-  # TODO: a simple validation script that the structure here matches the .bcr/presubmit.yaml file
+  translate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Export BCR presubmit config
+        id: config
+        run: |
+          echo 'presubmit<<__BCR_CONFIG__' >> "$GITHUB_OUTPUT"
+          yq -o=json '.' .bcr/presubmit.yml >> "$GITHUB_OUTPUT"
+          echo '__BCR_CONFIG__' >> "$GITHUB_OUTPUT"
   bcr-presubmit:
     name: 🌿
     runs-on: ${{ matrix.platform }}
+    needs: translate
     strategy:
       matrix:
-        platform: ["ubuntu-22.04", "macos-latest", "windows-latest"] # , "debian10"]
+        platform: ["ubuntu-22.04", "macos-latest"]
         bazel: ["9.*", "8.x", "7.x"] # , "6.x"]
-        module_path: ["examples"]
+        module_path: ${{ needs.translate.outputs.config }} # ["examples"]
         test_targets: ["//..."]
     steps:
       - uses: actions/checkout@v5
@@ -22,4 +32,3 @@ jobs:
         working-directory: ${{ matrix.module_path }}
         env:
           USE_BAZEL_VERSION: ${{ matrix.bazel }}
-  
