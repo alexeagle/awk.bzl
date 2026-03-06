@@ -16,7 +16,7 @@ use_repo(multitool, "multitool")
 
 register_toolchains("//awk/toolchains:gawk")
 
-bazel_dep(name = "aspect_bazel_lib", version = "2.19.3", dev_dependency = True)
+bazel_dep(name = "bazel_lib", version = "3.2.2", dev_dependency = True)
 bazel_dep(name = "buildifier_prebuilt", version = "6.1.2", dev_dependency = True)
 bazel_dep(name = "rules_shell", version = "0.4.0", dev_dependency = True)
 bazel_dep(name = "rules_testing", version = "0.8.0", dev_dependency = True)

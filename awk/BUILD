@@ -1,4 +1,4 @@
-load("@aspect_bazel_lib//:bzl_library.bzl", "bzl_library")
+load("@bazel_lib//:bzl_library.bzl", "bzl_library")
 load("//awk/private:toolchain.bzl", "current_awk_toolchain")
 
 current_awk_toolchain(
