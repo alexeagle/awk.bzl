@@ -7,7 +7,7 @@ toolchain_type(
 
 awk_toolchain(
     name = "gawk_toolchain_impl",
-    awk = "@gawk",
+    awk = "@multitool//tools/gawk",
     visibility = ["//visibility:public"],
 )
 

@@ -8,7 +8,11 @@ module(
 bazel_dep(name = "bazel_skylib", version = "1.4.1")
 bazel_dep(name = "package_metadata", version = "0.0.2")
 bazel_dep(name = "platforms", version = "0.0.5")
-bazel_dep(name = "gawk", version = "5.3.2.bcr.1")
+bazel_dep(name = "rules_multitool", version = "1.11.1")
+
+multitool = use_extension("@rules_multitool//multitool:extension.bzl", "multitool")
+multitool.hub(lockfile = "//:multitool.lock.json")
+use_repo(multitool, "multitool")
 
 register_toolchains("//awk/toolchains:gawk")
 

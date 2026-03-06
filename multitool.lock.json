@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/bazel-contrib/rules_multitool/main/lockfile.schema.json",
+  "gawk": {
+    "binaries": [
+      {
+        "kind": "file",
+        "url": "https://github.com/plobsing/gawk-prebuilt/releases/download/v5.3.2%2Beaa1d484/gawk_darwin_amd64",
+        "sha256": "738a96e5cf7ab4235838854985c573ca6ebafca0af40372a381daa199b7d62f6",
+        "os": "macos",
+        "cpu": "x86_64"
+      },
+      {
+        "kind": "file",
+        "url": "https://github.com/plobsing/gawk-prebuilt/releases/download/v5.3.2%2Beaa1d484/gawk_darwin_arm64",
+        "sha256": "28206d7625cf6008ddb576f5a56953151034b69021c3171e9718e6634bdda54c",
+        "os": "macos",
+        "cpu": "arm64"
+      },
+      {
+        "kind": "file",
+        "url": "https://github.com/plobsing/gawk-prebuilt/releases/download/v5.3.2%2Beaa1d484/gawk_linux_amd64",
+        "sha256": "20e6fd3ea50a69ddb4d574a76a718c244c3b9f3225057e3e6136ab6a96bfb2b9",
+        "os": "linux",
+        "cpu": "x86_64"
+      },
+      {
+        "kind": "file",
+        "url": "https://github.com/plobsing/gawk-prebuilt/releases/download/v5.3.2%2Beaa1d484/gawk_linux_arm64",
+        "sha256": "81344c183b39b29e24bdb0e636c930521534457372cc3b0a4efe3f540b9d573d",
+        "os": "linux",
+        "cpu": "arm64"
+      },
+      {
+        "kind": "file",
+        "url": "https://github.com/plobsing/gawk-prebuilt/releases/download/v5.3.2%2Beaa1d484/gawk_windows_amd64.exe",
+        "sha256": "1a5f67670888e17398d6acb1ad44ddcac134a6ba3f58acf67563ea8417ba31e1",
+        "os": "windows",
+        "cpu": "x86_64"
+      },
+      {
+        "kind": "file",
+        "url": "https://github.com/plobsing/gawk-prebuilt/releases/download/v5.3.2%2Beaa1d484/gawk_windows_arm64.exe",
+        "sha256": "7c474f93c848b700de5eaf5cd74177b18d53698b0b484c5b03be6b05db73dc48",
+        "os": "windows",
+        "cpu": "arm64"
+      }
+    ]
+  }
+}
