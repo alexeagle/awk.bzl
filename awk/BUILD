@@ -1,4 +1,10 @@
-load("@aspect_bazel_lib//:bzl_library.bzl", "bzl_library")
+load("@bazel_lib//:bzl_library.bzl", "bzl_library")
+load("//awk/private:toolchain.bzl", "current_awk_toolchain")
+
+current_awk_toolchain(
+    name = "current_awk_toolchain",
+    visibility = ["//visibility:public"],
+)
 
 bzl_library(
     name = "awk",
@@ -6,6 +12,7 @@ bzl_library(
     visibility = ["//awk:__subpackages__"],
     deps = [
         "//awk/private:awk.bzl",
+        "//awk/private:toolchain",
         "@bazel_skylib//lib:partial",
         "@bazel_skylib//rules:write_file",
     ],
