@@ -3,11 +3,15 @@
 load("@bazel_skylib//lib:partial.bzl", "partial")
 load("@bazel_skylib//rules:write_file.bzl", "write_file")
 load("//awk/private:awk.bzl", _awk_lib = "awk_lib")
+load("//awk/private:toolchain.bzl", _awk_toolchain = "awk_toolchain", _current_awk_toolchain = "current_awk_toolchain")
+
+awk_toolchain = _awk_toolchain
+current_awk_toolchain = _current_awk_toolchain
 
 _awk_rule = rule(
     attrs = _awk_lib.attrs,
     implementation = _awk_lib.implementation,
-    # toolchains = ["@awk.bzl//awk/toolchain:type"],
+    toolchains = _awk_lib.toolchains,
 )
 
 def awk(name, src, program = None, progfile = None, out = None, **kwargs):
