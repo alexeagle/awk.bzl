@@ -1,4 +1,4 @@
-"Public API for calling awk"
+"Public API for calling awk; here is some documentation"
 
 load("@bazel_skylib//lib:partial.bzl", "partial")
 load("@bazel_skylib//rules:write_file.bzl", "write_file")
